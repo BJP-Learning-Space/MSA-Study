@@ -17,8 +17,15 @@ spring:
         - id: first-service
           uri: http://localhost:8081
           predicates:
-            - Path=/first-service/**
+            - Path=/first-service/{segment}
+          filters:
+            - CustomFilter
+#            - AddRequestHeader=Hello, {segment}
+
         - id: second-service
           uri: http://localhost:8082
           predicates:
             - Path=/second-service/**
+          filters:
+            - CustomFilter
+#            - AddRequestHeader=Hello, World2

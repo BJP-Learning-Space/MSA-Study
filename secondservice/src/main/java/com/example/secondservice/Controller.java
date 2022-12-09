@@ -1,15 +1,13 @@
-package com.example.firstservice;
+package com.example.secondservice;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/first-service")
 public class Controller {
-    @GetMapping(value = "/test")
+    @GetMapping("/second-service/test")
     public String test(HttpServletRequest request) {
-        return "First Service : " + request.getHeader("Hello") + "\n" + request.getRequestURI();
+        return "Second Service : " + request.getHeader("Hello") + "\n" + request.getRequestURI();
     }
 }

@@ -1,6 +1,10 @@
 package com.example.userservice.controller;
 
+import com.example.userservice.domain.User;
+import com.example.userservice.dto.UserRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +20,6 @@ public class UserController {
         this.greeting = greeting;
     }
 
-
     @RequestMapping("/health")
     public String healthCheck() {
         return message;
@@ -25,5 +28,10 @@ public class UserController {
     @RequestMapping("/greeting")
     public String greeting() {
         return greeting.getMessage();
+    }
+
+    @PostMapping
+    public User createUser(@RequestBody UserRequest userRequest) {
+        return userService.createUser(userRequest);
     }
 }

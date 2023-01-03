@@ -17,7 +17,7 @@ public class User {
     @Column(nullable = false, unique = true, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, length = 100, unique = true)
     private String encryptedPassword;
 
     @Column(nullable = false, length = 50)

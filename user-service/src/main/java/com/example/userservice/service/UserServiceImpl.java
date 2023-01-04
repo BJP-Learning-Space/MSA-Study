@@ -6,6 +6,8 @@ import com.example.userservice.dto.UserRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
@@ -21,5 +23,10 @@ public class UserServiceImpl implements UserService {
         User user = new User(userRequest.email(), bCryptPasswordEncoder.encode(userRequest.password()), userRequest.name());
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 }

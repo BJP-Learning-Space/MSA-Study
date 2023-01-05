@@ -34,6 +34,14 @@ spring:
           filters:
             - name : CustomFilter
             - name : LoggingFilter
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
       default-filters:
         - name: GlobalFilter
           args:

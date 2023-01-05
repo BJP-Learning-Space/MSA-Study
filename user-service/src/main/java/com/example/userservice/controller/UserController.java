@@ -4,6 +4,7 @@ import com.example.userservice.domain.User;
 import com.example.userservice.dto.UserRequest;
 import com.example.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,16 +22,18 @@ public class UserController {
     private String message;
 
     private final Greeting greeting;
-    private UserService userService;
+    private final UserService userService;
+    private final Environment environment;
 
-    public UserController(Greeting greeting, final UserService userService) {
+    public UserController(Greeting greeting, final UserService userService, Environment environment) {
         this.greeting = greeting;
         this.userService = userService;
+        this.environment = environment;
     }
 
     @RequestMapping("/health")
     public String healthCheck() {
-        return message;
+        return String.format("Port : %s", environment.getProperty("local.server.port"));
     }
 
     @RequestMapping("/greeting")

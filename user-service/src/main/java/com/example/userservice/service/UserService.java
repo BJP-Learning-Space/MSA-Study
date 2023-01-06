@@ -1,12 +1,10 @@
 package com.example.userservice.service;
 
-import com.example.userservice.domain.User;
 import com.example.userservice.dto.UserRequest;
-
-import java.util.List;
+import com.example.userservice.dto.UserResponse;
 
 public interface UserService {
-    User createUser(UserRequest userRequest);
-
-    List<User> findAllUsers();
+    UserResponse createUser(UserRequest userRequest);
+    UserResponse findUserById(String userId);
+    Iterable<UserResponse> findAllUsers();
 }

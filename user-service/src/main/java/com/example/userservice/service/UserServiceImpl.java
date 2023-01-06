@@ -3,10 +3,11 @@ package com.example.userservice.service;
 import com.example.userservice.domain.User;
 import com.example.userservice.domain.UserRepository;
 import com.example.userservice.dto.UserRequest;
+import com.example.userservice.dto.UserResponse;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,14 +20,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(final UserRequest userRequest) {
+    public UserResponse createUser(final UserRequest userRequest) {
         User user = new User(userRequest.email(), bCryptPasswordEncoder.encode(userRequest.password()), userRequest.name());
 
-        return userRepository.save(user);
+        return UserResponse.of(userRepository.save(user));
     }
 
     @Override
-    public List<User> findAllUsers() {
-        return userRepository.findAll();
+    public UserResponse findUserById(String userId) {
+        return UserResponse.of(userRepository.findByUserId(userId)
+                .orElseThrow(RuntimeException::new));
+    }
+
+    @Override
+    public Iterable<UserResponse> findAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(UserResponse::of)
+                .toList();
     }
 }

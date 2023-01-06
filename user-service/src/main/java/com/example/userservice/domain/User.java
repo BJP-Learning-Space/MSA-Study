@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String uuid;
+    private String userId;
 
     @Column(nullable = false, unique = true, length = 50)
     private String email;
@@ -32,11 +32,15 @@ public class User {
         this.name = name;
     }
 
-    public User(final String uuid, final String email, final String encryptedPassword, final String name) {
-        this.uuid = uuid;
+    public User(final String userId, final String email, final String encryptedPassword, final String name) {
+        this.userId = userId;
         this.email = email;
         this.encryptedPassword = encryptedPassword;
         this.name = name;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public String getEmail() {

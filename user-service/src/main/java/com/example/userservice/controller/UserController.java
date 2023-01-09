@@ -56,7 +56,7 @@ public class UserController {
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> findAllUsers() {
-        return (List<User>) userService.findAllUsers();
+    public List<UserResponse> findAllUsers() {
+        return userService.findAllUsers();
     }
 }

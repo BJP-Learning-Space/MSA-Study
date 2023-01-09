@@ -7,6 +7,7 @@ import com.example.userservice.dto.UserResponse;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Iterable<UserResponse> findAllUsers() {
+    public List<UserResponse> findAllUsers() {
         return userRepository.findAll()
                 .stream()
                 .map(UserResponse::of)

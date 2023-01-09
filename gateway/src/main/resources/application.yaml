@@ -21,19 +21,7 @@ spring:
           filters:
             - name: CustomFilter
             - name: LoggingFilter
-              args:
-                baseMessage: First Service
-                preLoggerName: first-service
-                postLoggerName: first-service
 #            - AddRequestHeader=Hello, {segment}
-
-        - id: second-service
-          uri: lb://SECOND-SERVICE
-          predicates:
-            - Path=/second-service/**
-          filters:
-            - name : CustomFilter
-            - name : LoggingFilter
 
         - id: user-service
           uri: lb://USER-SERVICE
@@ -41,6 +29,13 @@ spring:
             - Path=/user-service/**
           filters:
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+          filters:
+            - RewritePath=/catalog-service/(?<segment>.*), /$\{segment}
 
       default-filters:
         - name: GlobalFilter

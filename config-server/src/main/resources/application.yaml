@@ -1,7 +1,12 @@
+server:
+  port: 8888
+
 spring:
+  application:
+    name: config-server
   cloud:
     config:
       server:
         git:
-          uri: http://github.com
+          uri: https://github.com/BJP-Learning-Space/MSA-Study/config
 

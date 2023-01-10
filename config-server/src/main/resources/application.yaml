@@ -8,5 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/BJP-Learning-Space/MSA-Study/config
+          uri: https://github.com/BJP-Learning-Space/MSA-Study
+          search-paths: /config
+          default-label: master
 

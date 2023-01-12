@@ -28,4 +28,4 @@ greeting:
   message: Hello from the user service!
 
 token:
-  secret: bjp
+  secret: Changed BJP

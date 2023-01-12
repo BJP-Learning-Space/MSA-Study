@@ -1,6 +1,5 @@
 package com.example.userservice.controller;
 
-import com.example.userservice.domain.User;
 import com.example.userservice.dto.UserRequest;
 import com.example.userservice.dto.UserResponse;
 import com.example.userservice.service.UserService;
@@ -20,22 +19,33 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Value("${greeting.message}")
-    private String message;
+//    @Value("${greeting.message}")
+//    private String message;
 
     private final Greeting greeting;
     private final UserService userService;
     private final Environment environment;
+    private final TestController testController;
 
-    public UserController(Greeting greeting, final UserService userService, Environment environment) {
+    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController) {
         this.greeting = greeting;
         this.userService = userService;
         this.environment = environment;
+        this.testController = testController;
+    }
+
+    @RequestMapping("feign")
+    public String feign() {
+        System.out.println("여기 들어옴" + TenantContext.getCurrentTenant());
+        return testController.test();
     }
 
     @RequestMapping("/health")
     public String healthCheck() {
-        return String.format("Port : %s", environment.getProperty("local.server.port"));
+        return String.format(
+                "Port : %s", environment.getProperty("local.server.port")
+                + " Greetings : " + environment.getProperty("greeting.message")
+        );
     }
 
     @RequestMapping("/greeting")

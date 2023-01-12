@@ -1,6 +1,8 @@
 spring:
   profiles:
     active: dev
+  cloud:
+    config:
+      name: user-service
   config:
     import: configserver:http://localhost:8888
-    name: user-service

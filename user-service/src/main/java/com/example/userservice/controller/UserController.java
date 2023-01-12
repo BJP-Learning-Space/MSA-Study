@@ -43,8 +43,7 @@ public class UserController {
     @RequestMapping("/health")
     public String healthCheck() {
         return String.format(
-                "Port : %s", environment.getProperty("local.server.port")
-                + " Greetings : " + environment.getProperty("greeting.message")
+                "Port : %s%nGreetings : %s%nToken : %s", environment.getProperty("local.server.port"), environment.getProperty("greeting.message"), environment.getProperty("token.secret")
         );
     }
 

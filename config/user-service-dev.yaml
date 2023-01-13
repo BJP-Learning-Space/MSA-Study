@@ -28,6 +28,6 @@ greeting:
   message: Hello from the user service!
 
 token:
-  secret: Changed BJP
-  name: Before Changed
-  desk: Desker
+  secret: Changed BJP2
+  name: After Changed
+  desk: After Desker

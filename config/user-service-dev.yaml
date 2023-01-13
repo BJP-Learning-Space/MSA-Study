@@ -29,3 +29,5 @@ greeting:
 
 token:
   secret: Changed BJP
+  name: Before Changed
+  desk: Desker

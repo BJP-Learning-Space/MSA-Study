@@ -3,7 +3,6 @@ package com.example.userservice.controller;
 import com.example.userservice.dto.UserRequest;
 import com.example.userservice.dto.UserResponse;
 import com.example.userservice.service.UserService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,19 +18,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-//    @Value("${greeting.message}")
-//    private String message;
-
     private final Greeting greeting;
     private final UserService userService;
     private final Environment environment;
     private final TestController testController;
+    private final Token token;
 
-    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController) {
+    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController, final Token token) {
         this.greeting = greeting;
         this.userService = userService;
         this.environment = environment;
         this.testController = testController;
+        this.token = token;
     }
 
     @RequestMapping("feign")
@@ -45,6 +43,11 @@ public class UserController {
         return String.format(
                 "Port : %s%nGreetings : %s%nToken : %s", environment.getProperty("local.server.port"), environment.getProperty("greeting.message"), environment.getProperty("token.secret")
         );
+    }
+
+    @RequestMapping("/token")
+    public String token() {
+        return token.getSecret() + "\n" + token.getName() + "\n" + token.getDesk();
     }
 
     @RequestMapping("/greeting")

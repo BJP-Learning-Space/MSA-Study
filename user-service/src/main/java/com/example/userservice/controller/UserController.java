@@ -2,6 +2,8 @@ package com.example.userservice.controller;
 
 import com.example.userservice.dto.UserRequest;
 import com.example.userservice.dto.UserResponse;
+import com.example.userservice.service.ExampleService;
+import com.example.userservice.service.RefreshScopeExampleService;
 import com.example.userservice.service.UserService;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -25,8 +27,10 @@ public class UserController {
     private final Example example;
     private final Temp temp;
     private final RefreshScopeExample refreshScopeExample;
+    private final ExampleService exampleService;
+    private final RefreshScopeExampleService refreshScopeExampleService;
 
-    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController, final Example example, final Temp temp, final RefreshScopeExample refreshScopeExample) {
+    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController, final Example example, final Temp temp, final RefreshScopeExample refreshScopeExample, final ExampleService exampleService, final RefreshScopeExampleService refreshScopeExampleService) {
         this.greeting = greeting;
         this.userService = userService;
         this.environment = environment;
@@ -34,6 +38,8 @@ public class UserController {
         this.example = example;
         this.temp = temp;
         this.refreshScopeExample = refreshScopeExample;
+        this.exampleService = exampleService;
+        this.refreshScopeExampleService = refreshScopeExampleService;
     }
 
     @RequestMapping("feign")
@@ -55,6 +61,16 @@ public class UserController {
     @RequestMapping("/yrefresh")
     public String yrefresh() {
         return refreshScopeExample.getId() + "\n" + refreshScopeExample.getName();
+    }
+
+    @RequestMapping("/nrefresh-service")
+    public String nrefreshService() {
+        return exampleService.nrefresh();
+    }
+
+    @RequestMapping("/yrefresh-service")
+    public String yrefreshService() {
+        return refreshScopeExampleService.yrefresh();
     }
 
     @RequestMapping("/temp")

@@ -26,10 +26,10 @@ greeting:
 
 nrefresh:
   id: nrefresh
-  name: 변경전
+  name: 변경후
 
 yrefresh:
   id: yrefresh
-  name: 변경전
+  name: 변경후
 
 

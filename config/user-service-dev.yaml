@@ -24,6 +24,11 @@ eureka:
 greeting:
   message: Hello from the user service!
 
-example:
-  id: 2
-  name: 변경후
+nrefresh:
+  id: 1
+  name: 변경전
+
+refresh:
+  id
+
+

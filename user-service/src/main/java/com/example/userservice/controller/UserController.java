@@ -24,14 +24,16 @@ public class UserController {
     private final TestController testController;
     private final Example example;
     private final Temp temp;
+    private final RefreshScopeExample refreshScopeExample;
 
-    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController, final Example example, final Temp temp) {
+    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController, final Example example, final Temp temp, final RefreshScopeExample refreshScopeExample) {
         this.greeting = greeting;
         this.userService = userService;
         this.environment = environment;
         this.testController = testController;
         this.example = example;
         this.temp = temp;
+        this.refreshScopeExample = refreshScopeExample;
     }
 
     @RequestMapping("feign")
@@ -45,9 +47,14 @@ public class UserController {
         return environment.getProperty("local.server.port") + "\n" + environment.getProperty("greeting.message") + "\n" + environment.getProperty("token.secret");
     }
 
-    @RequestMapping("/token")
-    public String token() {
+    @RequestMapping("/nrefresh")
+    public String nrefresh() {
         return example.getId() + "\n" + example.getName();
+    }
+
+    @RequestMapping("/refresh")
+    public String refresh() {
+        return refreshScopeExample.getId() + "\n" + refreshScopeExample.getName();
     }
 
     @RequestMapping("/temp")

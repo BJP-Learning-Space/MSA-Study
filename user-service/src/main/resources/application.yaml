@@ -15,3 +15,8 @@ management:
     endpoint:
       health:
       show-details: always
+
+temp:
+  name: temp
+  money: 2000
+

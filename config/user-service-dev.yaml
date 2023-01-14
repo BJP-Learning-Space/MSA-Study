@@ -25,11 +25,11 @@ greeting:
   message: Hello from the user service!
 
 nrefresh:
-  id: 1
+  id: nrefresh
   name: 변경전
 
 yrefresh:
-  id: 1
+  id: yrefresh
   name: 변경전
 
 

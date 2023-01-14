@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("nrefresh")
 public class Example {
-    private Long id;
+    private String id;
     private String name;
 
     public Example() {

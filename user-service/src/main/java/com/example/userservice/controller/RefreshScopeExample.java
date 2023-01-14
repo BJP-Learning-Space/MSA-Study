@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("yrefresh")
 public class RefreshScopeExample {
-    private Long id;
+    private String id;
     private String name;
 
     public RefreshScopeExample() {

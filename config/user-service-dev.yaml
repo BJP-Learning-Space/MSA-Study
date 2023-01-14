@@ -27,7 +27,6 @@ eureka:
 greeting:
   message: Hello from the user service!
 
-token:
-  secret: Changed BJP
-  name: After Changed
-  desk: After Desker
+example:
+  id: 1
+  name: 변경전

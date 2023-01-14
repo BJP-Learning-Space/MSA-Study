@@ -3,15 +3,16 @@ package com.example.userservice.controller;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
-@ConfigurationProperties("token")
-public class Token {
-    private String secret;
+@Component
+@ConfigurationProperties("example")
+public class Example {
+    private Long id;
     private String name;
-    private String desk;
 
-    public Token() {
+    public Example() {
     }
 }

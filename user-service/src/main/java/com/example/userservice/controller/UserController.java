@@ -22,15 +22,15 @@ public class UserController {
     private final UserService userService;
     private final Environment environment;
     private final TestController testController;
-    private final Token token;
+    private final Example example;
     private final Temp temp;
 
-    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController, final Token token, final Temp temp) {
+    public UserController(Greeting greeting, final UserService userService, Environment environment, final TestController testController, final Example example, final Temp temp) {
         this.greeting = greeting;
         this.userService = userService;
         this.environment = environment;
         this.testController = testController;
-        this.token = token;
+        this.example = example;
         this.temp = temp;
     }
 
@@ -47,7 +47,7 @@ public class UserController {
 
     @RequestMapping("/token")
     public String token() {
-        return token.getSecret() + "\n" + token.getName() + "\n" + token.getDesk();
+        return example.getId() + "\n" + example.getName();
     }
 
     @RequestMapping("/temp")

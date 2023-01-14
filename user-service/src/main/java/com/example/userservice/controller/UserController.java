@@ -52,8 +52,8 @@ public class UserController {
         return example.getId() + "\n" + example.getName();
     }
 
-    @RequestMapping("/refresh")
-    public String refresh() {
+    @RequestMapping("/yrefresh")
+    public String yrefresh() {
         return refreshScopeExample.getId() + "\n" + refreshScopeExample.getName();
     }
 

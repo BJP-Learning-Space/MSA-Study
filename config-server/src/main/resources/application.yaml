@@ -11,4 +11,7 @@ spring:
           uri: https://github.com/BJP-Learning-Space/MSA-Study
           search-paths: /config
           default-label: master
+#          uri: file:///Users/qjawlsqjacks/Projects/MSA-Study
+#          search-paths: /config
+#          default-label: master
 

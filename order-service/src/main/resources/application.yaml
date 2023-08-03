@@ -5,9 +5,13 @@ spring:
   application:
     name: order-service
   datasource:
-    driver-class-name: org.h2.Driver
-    username: sa
-    url: jdbc:h2:mem:testdb
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+  #    driver-class-name: org.h2.Driver
+#    username: sa
+#    url: jdbc:h2:mem:testdb
   jpa:
     hibernate:
       ddl-auto: create-drop

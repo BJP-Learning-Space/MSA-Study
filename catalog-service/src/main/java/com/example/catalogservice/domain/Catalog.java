@@ -38,4 +38,9 @@ public class Catalog implements Serializable {
 
     public Catalog() {
     }
+
+    public Catalog setStock(final Integer stock) {
+        this.stock = stock;
+        return this;
+    }
 }

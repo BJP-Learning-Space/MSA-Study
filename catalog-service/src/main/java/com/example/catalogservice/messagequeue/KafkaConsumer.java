@@ -36,6 +36,7 @@ public class KafkaConsumer {
 
         final Catalog catalog = catalogRepository.findByProductId((String) map.get("productId"));
         if (catalog != null) {
+            log.info("Catalog before: -> {}", catalog);
             catalog.setStock(catalog.getStock() - (Integer) map.get("stock"));
             catalogRepository.save(catalog);
         }

@@ -1,15 +1,16 @@
 server:
-  port: 0
+  port: 8000
+#  port: 0
 
 spring:
   application:
     name: catalog-service
-  h2:
-    console:
-      enabled: true
-      settings:
-        web-allow-others: true
-      path: /h2-console
+#  h2:
+#    console:
+#      enabled: true
+#      settings:
+#        web-allow-others: true
+#      path: /h2-console
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
@@ -20,10 +21,15 @@ spring:
 #    url: jdbc:h2:mem:testdb
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     show-sql: true
     generate-ddl: true
     defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      schema-locations:
+        - classpath:/data.sql
 
 eureka:
   instance:
@@ -33,6 +39,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+    enabled: false
 
 logging:
   level:
